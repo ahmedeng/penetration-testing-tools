@@ -1,0 +1,1 @@
+command_options=--url {url} --wordlist ~/passwords/passwords.txt --username admin

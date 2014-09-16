@@ -1,0 +1,99 @@
+#!/usr/bin/python
+# -*- coding: utf-8 -*-
+
+from bs4 import BeautifulSoup
+import urlparse
+import re
+import time
+import requests
+import sys
+import socket
+
+google_domains=".google.com .google.ad .google.ae .google.com.af .google.com.ag .google.com.ai .google.al .google.am .google.co.ao .google.com.ar .google.as .google.at .google.com.au .google.az .google.ba .google.com.bd .google.be .google.bf .google.bg .google.com.bh .google.bi .google.bj .google.com.bn .google.com.bo .google.com.br .google.bs .google.bt .google.co.bw .google.by .google.com.bz .google.ca .google.cd .google.cf .google.cg .google.ch .google.ci .google.co.ck .google.cl .google.cm .google.cn .google.com.co .google.co.cr .google.com.cu .google.cv .google.com.cy .google.cz .google.de .google.dj .google.dk .google.dm .google.com.do .google.dz .google.com.ec .google.ee .google.com.eg .google.es .google.com.et .google.fi .google.com.fj .google.fm .google.fr .google.ga .google.ge .google.gg .google.com.gh .google.com.gi .google.gl .google.gm .google.gp .google.gr .google.com.gt .google.gy .google.com.hk .google.hn .google.hr .google.ht .google.hu .google.co.id .google.ie .google.co.il .google.im .google.co.in .google.iq .google.is .google.it .google.je .google.com.jm .google.jo .google.co.jp .google.co.ke .google.com.kh .google.ki .google.kg .google.co.kr .google.com.kw .google.kz .google.la .google.com.lb .google.li .google.lk .google.co.ls .google.lt .google.lu .google.lv .google.com.ly .google.co.ma .google.md .google.me .google.mg .google.mk .google.ml .google.com.mm .google.mn .google.ms .google.com.mt .google.mu .google.mv .google.mw .google.com.mx .google.com.my .google.co.mz .google.com.na .google.com.nf .google.com.ng .google.com.ni .google.ne .google.nl .google.no .google.com.np .google.nr .google.nu .google.co.nz .google.com.om .google.com.pa .google.com.pe .google.com.pg .google.com.ph .google.com.pk .google.pl .google.pn .google.com.pr .google.ps .google.pt .google.com.py .google.com.qa .google.ro .google.ru .google.rw .google.com.sa .google.com.sb .google.sc .google.se .google.com.sg .google.sh .google.si .google.sk .google.com.sl .google.sn .google.so .google.sm .google.sr .google.st .google.com.sv .google.td .google.tg .google.co.th .google.com.tj .google.tk .google.tl .google.tm .google.tn .google.to .google.com.tr .google.tt .google.com.tw .google.co.tz .google.com.ua .google.co.ug .google.co.uk .google.com.uy .google.co.uz .google.com.vc .google.co.ve .google.vg .google.co.vi .google.com.vn .google.vu .google.ws .google.rs .google.co.za .google.co.zm .google.co.zw .google.cat".split()
+
+
+class UrlGoogle:
+    def __init__(self,query,domain='com',start_page=1,end_page=2):
+        self.query=query
+        self.start_page=start_page
+        self.end_page=end_page
+        #self.host='http://www.google.'+domain
+        #self.search_link=self.host
+        self.urls=set()
+        self.next_domain=0    
+        
+    def search(self):
+        google_domain = google_domains[self.next_domain]
+        google_domain='http://www'+google_domain
+        search_link=google_domain+"/search?q="+self.query+"&oq="+self.query+"&aqs=chrome..69i57.1384j0j9&sourceid=chrome&es_sm=93&ie=UTF-8"
+        print '########################################\n'+search_link+'\n########################################'
+        for page in range(self.start_page,self.end_page+1):
+            #print page
+##                browser = mechanize.Browser()
+##                browser.set_handle_robots(False)
+##                browser.set_handle_equiv(False)
+##                browser.addheaders = [('User-agent', 'Mozilla/5.0')] 
+##                
+            #try:
+                #if page==self.start_page:
+                    #browser.open(search_link)
+                    #print 'aaaaaaaaaa'
+##                        browser.select_form(name='f')   
+##                        browser.form['q'] = self.query # query
+##                        data = browser.submit()
+                    
+                #else:
+                    #data=browser.open(search_link)
+                    #data=browser.follow_link(browser.find_link(url=self.search_link))
+            #except (mechanize.HTTPError,mechanize.URLError):
+                 #break
+            
+            # do the query
+            try:
+                responce=requests.get(search_link,timeout=20)
+                print 'HTTP code:'+str(responce.status_code)
+                if responce.status_code==200:
+                    #print 'CCC'
+                    data=responce.text
+                    #print 'CCCCCCCCCC'
+                else:                    
+                    break
+            except (requests.exceptions.Timeout,requests.exceptions.ConnectionError,socket.error):
+                break
+            print page    
+            soup=BeautifulSoup(data)
+
+            for li in soup.find_all('li',attrs={'class':'g'}):
+                url=li.a['href']
+                url=urlparse.parse_qs(urlparse.urlparse(url).query)['q'][0]
+                self.urls.add(url)
+
+            print 'Urls found:'+str(len(self.urls))
+            
+            #print soup.prettify()
+            fl_links=soup.find(href=re.compile('start='+str(page+1)+'0'))
+            #print 'aaaaaaaaaacccccccccc'
+            #print fl_links
+            if fl_links :
+                url=fl_links['href']
+            else:
+                #print 'Data########################################\n'+soup.prettify()+'########################################'
+                #print fl_links
+                #sys.exit(0)
+                break
+            #print url
+            #url=urlparse.parse_qs(urlparse.urlparse(url).query)['q'][0]
+            search_link=google_domain+url
+            #print search_link
+            
+            time.sleep(3)
+    def save(self,filepath):
+        print '@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@'+'\n'.join(self.urls)+'\n Total Urls found:'+str(len(self.urls))+'@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@\n@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@'
+        with open(filepath, 'w') as file:
+            for item in self.urls:
+               file.write("{}\n".format(item))
+        
+
+u=UrlGoogle('site:.il','co.il')
+u.search()
+print '\n'.join(u.urls)+'\n'+str(len(u.urls))

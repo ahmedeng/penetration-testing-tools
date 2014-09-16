@@ -1,0 +1,1 @@
+command_options=--output-dir={output_dir} --batch --thread 10 --dbs --proxy http://127.0.0.1:3400 --random-agent --hex --beep --eta --parse-errors  --answers=follow=N --smart -u "{url}" 

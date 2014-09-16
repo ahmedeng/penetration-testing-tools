@@ -1,0 +1,2 @@
+command_options= --thread 10  --proxy http://127.0.0.1:3400 --random-agent --beep --eta --parse-errors  --answers=follow=N   --batch --output-dir=/root/my_scripts/r4bia/output/injectable/ -u "{url}"
+
