@@ -27,7 +27,10 @@ class UrlsDorks:
         else:
             output_dir=_utils.create_save_dir(global_vars['save_dir']+"urls")
             output_filename=output_dir+str(uuid.uuid4())
-            u=urls.UrlGoogle('site:.il inurl:'+global_vars['dorks'],'co.il')
+            if global_vars['dorks_country']:
+                u=urls.UrlGoogle('site:.'+global_vars['dorks_country']+' inurl:'+global_vars['dorks'],'co.il')
+            else:
+                u=urls.UrlGoogle(global_vars['dorks'],'co.il')   
             if u.search():
                 print 'Scanning...'
                         

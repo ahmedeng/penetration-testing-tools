@@ -41,7 +41,7 @@ class Utils:
     def fix_url(self,url):
         if "http://" not in url:
                 url="http://"+url
-        return urllib.unquote(url)
+        return urllib.unquote(url).replace('"','')
         #return url
 
     def create_save_dir(self,path):

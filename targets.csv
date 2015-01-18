@@ -1,15 +1,11 @@
 host,injection_point,type,tool
-www.yudovin.co.il,http://www.yudovin.co.il/ContentPage.asp?PageId=1171,sql injection,sql_map
-www.block.co.il,http://www.block.co.il/post.php?id=2,sql injection,sql_map
-www.israbit.co.il,http://www.israbit.co.il/page.asp?PageID=10,sql injection,sql_map
-c-arbel.co.il,http://c-arbel.co.il/post.php?id=6,sql injection,sql_map
-www.emergency-veterinary.co.il,http://www.emergency-veterinary.co.il/staff1.asp?staff_id=44,sql injection,sql_map
-www.rnkishon.co.il,http://www.rnkishon.co.il/innerpage.asp?Pageid=128,sql injection,sql_map
-www.transglobal.co.il,http://www.transglobal.co.il/page.php?pageID=35,sql injection,sql_map
-www.meishar.co.il,http://www.meishar.co.il/page.asp?pageID=8,sql injection,sql_map
-www.fengshui-life.co.il,http://www.fengshui-life.co.il/default.asp?PageId=43,sql injection,sql_map
-www.tagain.co.il,http://www.tagain.co.il/press_and_awards.php?pageID=3,sql injection,sql_map
-www.carmelcarpets.co.il,http://www.carmelcarpets.co.il/Page.asp?PageCategoryID=75&PageId=63,sql injection,sql_map
-www.lev-tlv.co.il,http://www.lev-tlv.co.il/default.asp?pageid=17,sql injection,sql_map
-www.talkingbrands.co.il,http://www.talkingbrands.co.il/post.php?postID=41,sql injection,sql_map
-www.copyz.co.il,http://www.copyz.co.il/pages/page.php?pageID=4,sql injection,sql_map
+www.iarc.fr,http://www.iarc.fr/en/staffdirectory/displaystaff.php?id=10110,sql injection,sql_map
+www.tortequesne.fr,http://www.tortequesne.fr/tourisme_20.php?ID=109,sql injection,sql_map
+titouminie.celeonet.fr,http://titouminie.celeonet.fr/meef/contenu.php?id=70,sql injection,sql_map
+www.editionsknowware.fr,http://www.editionsknowware.fr/booklet.php?id=292,sql injection,sql_map
+www.integrascol.fr,http://www.integrascol.fr/fichemaladie.php?id=16,sql injection,sql_map
+www.educagri.fr,http://www.educagri.fr/index.php?id=1814&num=1595,sql injection,sql_map
+www.terrealter.fr,http://www.terrealter.fr/voir.php?id=8,sql injection,sql_map
+www.biblio.univ-evry.fr,http://www.biblio.univ-evry.fr/redirection/liens.php?id=203,sql injection,sql_map
+docelec.math-info-paris.cnrs.fr,http://docelec.math-info-paris.cnrs.fr/click.php?proxy=false&title=e0ac5378057a998eb5e301d04580e182&url=http://www.sciencedomain.org/journal-home.php?id=6,sql injection,sql_map
+www.batterie-pcportable.fr,http://www.batterie-pcportable.fr/batteryforlaptop.com.au/laptop_battery_desc.php?id=141456,sql injection,sql_map

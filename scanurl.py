@@ -96,7 +96,7 @@ class ScanUrl:
             else:
                 print "Undefined scanner"
             
-        session.session["scan"]=""
-        session.save_session()
+        ##session.session["scan"]=""
+        ##session.save_session()
         return
 

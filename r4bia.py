@@ -35,8 +35,8 @@ class R4bia:
                    'target_url':"",
                    'targets_file':"",
                    'dorks_file':"",
-                   'save_dir':config.CURRENT_DIR+"/output/"
-
+                   'save_dir':config.CURRENT_DIR+"/output/",
+                   'dorks_country':""
                     }
 
         self.flags={'uflag':False,
@@ -100,7 +100,7 @@ class R4bia:
             #print requested_scanners_string
         if self.global_vars['proxychains_string'] == "all":
              self.global_vars['proxychains_string']=""
-             for scan in self.scanners.keys():
+             for scan in self.scanners.scanners.keys():
                  self.global_vars['proxychains_string']=self.global_vars['proxychains_string']+scan+','
              self.global_vars['proxychains_string']=self.global_vars['proxychains_string'][:-1]
 
@@ -139,7 +139,7 @@ def main(argv):
    r4bia.usage()   
 
    try:
-      opts, args = getopt.getopt(argv,"ho:f:u:s:g:p:td:a:",["goodork","add_options=","session=","dorks_file=","dorks=","demo","proxychains=","groups=","scanners=","save_dir=","file=","url="])
+      opts, args = getopt.getopt(argv,"ho:f:u:s:g:p:td:a:",["goodork","add_options=","session=","dorks_file=","dorks=","demo","proxychains=","groups=","scanners=","save_dir=","file=","url=","dorks_country="])
    except getopt.GetoptError:
       print 'scan_web.py -f <outputfile>'
       sys.exit(2)
@@ -160,7 +160,9 @@ def main(argv):
       elif opt in ("-g", "--groups"):
          r4bia.global_vars['requested_groups_string'] =  arg
          gflag=True
-             
+      elif opt == "--dorks_country":
+         r4bia.global_vars['dorks_country'] =  arg
+                  
       elif opt in ("-s", "--scanners"):
          if not gflag:
              r4bia.global_vars['requested_scanners_string'] = arg
