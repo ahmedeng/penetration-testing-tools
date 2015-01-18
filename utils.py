@@ -40,6 +40,7 @@ class Utils:
 
     def fix_url(self,url):
         if "http://" not in url:
+            if "https://" not in url:
                 url="http://"+url
         return urllib.unquote(url).replace('"','')
         #return url
