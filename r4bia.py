@@ -36,7 +36,8 @@ class R4bia:
                    'targets_file':"",
                    'dorks_file':"",
                    'save_dir':config.CURRENT_DIR+"/output/",
-                   'dorks_country':""
+                   'dorks_country':"",
+                   'next_url':False
                     }
 
         self.flags={'uflag':False,
@@ -139,7 +140,7 @@ def main(argv):
    r4bia.usage()   
 
    try:
-      opts, args = getopt.getopt(argv,"ho:f:u:s:g:p:td:a:",["goodork","add_options=","session=","dorks_file=","dorks=","demo","proxychains=","groups=","scanners=","save_dir=","file=","url=","dorks_country="])
+      opts, args = getopt.getopt(argv,"ho:f:u:s:g:p:td:a:",["next_url","goodork","add_options=","session=","dorks_file=","dorks=","demo","proxychains=","groups=","scanners=","save_dir=","file=","url=","dorks_country="])
    except getopt.GetoptError:
       print 'scan_web.py -f <outputfile>'
       sys.exit(2)
@@ -181,6 +182,8 @@ def main(argv):
         r4bia.flags['sflag']=True
       elif opt == "--goodork":
         r4bia.global_vars['goodork_flag']=True
+      elif opt == "--next_url":
+        r4bia.global_vars['next_url']=True
       elif opt in ("-a","--add_options"):
         r4bia.global_vars['add_options_string']=arg
          

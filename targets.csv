@@ -1,9 +1,10 @@
 host,injection_point,type,tool
 www.iarc.fr,http://www.iarc.fr/en/staffdirectory/displaystaff.php?id=10110,sql injection,sql_map
 www.tortequesne.fr,http://www.tortequesne.fr/tourisme_20.php?ID=109,sql injection,sql_map
+www.cadr.fr,http://www.cadr.fr/reseau_detail.php?id=9,sql injection,sql_map
 titouminie.celeonet.fr,http://titouminie.celeonet.fr/meef/contenu.php?id=70,sql injection,sql_map
 www.editionsknowware.fr,http://www.editionsknowware.fr/booklet.php?id=292,sql injection,sql_map
-www.integrascol.fr,http://www.integrascol.fr/fichemaladie.php?id=16,sql injection,sql_map
+www.integrascol.fr,http://www.integrascol.fr/fichepedago.php?id=5,sql injection,sql_map
 www.educagri.fr,http://www.educagri.fr/index.php?id=1814&num=1595,sql injection,sql_map
 www.terrealter.fr,http://www.terrealter.fr/voir.php?id=8,sql injection,sql_map
 www.biblio.univ-evry.fr,http://www.biblio.univ-evry.fr/redirection/liens.php?id=203,sql injection,sql_map

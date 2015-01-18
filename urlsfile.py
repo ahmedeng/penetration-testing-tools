@@ -31,6 +31,8 @@ class UrlsFile:
                     global_vars['target_url']=result.group("url")
                     _scanurl=scanurl.ScanUrl()
                     _scanurl.start_scan_by_url(global_vars,scanners,session)
+        print 'End of urls file.'
+        print str(line_num)+' urls scanned'
                     
                     
     

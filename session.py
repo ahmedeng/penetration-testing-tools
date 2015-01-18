@@ -63,8 +63,9 @@ class Session:
         _scanners.load_scanners()
         if self.session["target_url"]!="":
             if self.session["scan"]:
-                _scanurl=scanurl.ScanUrl()
-                _scanurl.start_scan_by_url(self.session,_scanners.scanners,self)
+                if not global_vars['next_url']:
+                    _scanurl=scanurl.ScanUrl()
+                    _scanurl.start_scan_by_url(self.session,_scanners.scanners,self)
                 if self.session["targets_file"]!="":
                     self.session["urls_line"]=self.session["urls_line"]+1
         if self.session["targets_file"]!="":
