@@ -72,26 +72,3 @@ class UrlsDorksFile:
 
 
 
-
-    def start_scan_by_dorks(dorks):
-        if goodork_flag:
-            options = parse_config(GOODORK_DIR+"goodork")
-            goodork_path=options["path"]
-            output_filename=GOODORK_DIR+"output/"+str(uuid.uuid4())
-            command=goodork_path+" "+dorks+" -o "+output_filename
-            print command
-            subprocess.call(command.split(),shell=False);
-        else:
-            output_dir=create_save_dir(save_dir+"urls")
-            output_filename=output_dir+str(uuid.uuid4())
-            u=urls.UrlGoogle('site:.il inurl:'+dorks,'co.il')
-            u.search()
-            u.save(output_filename)
-        if os.path.isfile(output_filename):
-            if not tflag:
-                start_scan_by_file(output_filename)
-        
-            return output_filename
-        return ""
-
-
