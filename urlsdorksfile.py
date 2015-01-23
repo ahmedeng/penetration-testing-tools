@@ -38,8 +38,8 @@ class UrlsDorksFile:
                     global_vars['dorks']=dork.replace('\n','')
                     _urlsdorks=urlsdorks.UrlsDorks()
                     output_filename=_urlsdorks.start_scan_by_dorks(global_vars,scanners,session)
-                    session.session["dorks_line"]=line_num+1
-                    session.save_session()
+                    #session.session["dorks_line"]=line_num+1
+                    #session.save_session()
                     if output_filename != "":
                         if not global_vars['tflag']:
                             session.session["urls_line"]=1
