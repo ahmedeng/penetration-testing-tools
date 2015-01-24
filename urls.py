@@ -81,8 +81,10 @@ class UrlGoogle:
             #print soup.prettify()
             for li in soup.find_all('li',attrs={'class':'g'}):
                 url=li.a['href']
-                url=urlparse.parse_qs(urlparse.urlparse(url).query)['q'][0]
-                self.urls.add(url)
+                url=urlparse.parse_qs(urlparse.urlparse(url).query)
+                if 'q' in url:
+                    url=url['q'][0]
+                    self.urls.add(url)
 
             print 'Urls found:'+str(len(self.urls))
 
