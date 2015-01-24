@@ -27,8 +27,8 @@ class Session:
                    'target_url':"",
                    'targets_file':"",
                    'dorks_file':"",
-                   'save_dir':config.CURRENT_DIR+"/output/"
-
+                   'save_dir':config.CURRENT_DIR+"/output/",
+                   'dorks_country':""
                     }
 
         
@@ -45,6 +45,7 @@ class Session:
         self.session["targets_file"]=global_vars['targets_file']
         self.session["dorks_file"]=global_vars['dorks_file']
         self.session["save_dir"]=global_vars['save_dir']
+        self.session["dorks_country"]=global_vars['dorks_country']
         self.session["opt"]="start"
         self.session["session_name"]=global_vars['session_name']
         #print session
