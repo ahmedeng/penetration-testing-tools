@@ -127,7 +127,7 @@ class UrlGoogle:
             cur = con.cursor() 
             utils=utils.Utils()   
             for item in self.urls:
-            cur.execute("INSERT INTO urls VALUES('"+utils.get_host(item)+"','"+item+"')")
+                cur.execute("INSERT INTO urls VALUES('"+utils.get_host(item)+"','"+item+"')")
 
         with open(filepath, 'w') as file:
             for item in self.urls:
