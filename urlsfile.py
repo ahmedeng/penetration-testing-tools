@@ -65,7 +65,8 @@ class UrlsFile:
                 cur = con.cursor() 
                 cur.execute("SELECT url FROM urls")
                 rows = cur.fetchall()
-                for line in rows:
+                for row in rows:
+                    line = row[0]
                     if global_vars['session_name'] != "":
                             if session.session["opt"] == "load":
                                 if line_num < session.session["urls_line"]:
