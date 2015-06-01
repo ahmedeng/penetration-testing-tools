@@ -1,13 +1,19 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
 
-from bs4 import BeautifulSoup
-import urlparse
+import os
 import re
-import time
 import requests
-import sys
 import socket
+import sys
+import time
+from twisted.python import filepath
+import urlparse
+
+from bs4 import BeautifulSoup
+import sqlite3 as lite
+import utils
+
 
 google_domains=".google.com .google.ad .google.ae .google.com.af .google.com.ag .google.com.ai .google.al .google.am \
 .google.co.ao .google.com.ar .google.as .google.at .google.com.au .google.az .google.ba .google.com.bd .google.be .google.bf \
@@ -111,8 +117,18 @@ class UrlGoogle:
         self.search()
 
 
-    def save(self,filepath):
+    def save(self,filepat,out_dir):
         print '@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@\n'+'\n'.join(self.urls)+'\n Total Urls found:'+str(len(self.urls))+'\n@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@\n@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@'
+        
+        os.system('cp -f urls/urls.db '+out_dir+'/urls.db')
+        con = lite.connect('urls/urls.db')
+
+        with con:    
+            cur = con.cursor() 
+            utils=utils.Utils()   
+            for item in self.urls:
+            cur.execute("INSERT INTO urls VALUES('"+utils.get_host(item)+"','"+item+"')")
+
         with open(filepath, 'w') as file:
             for item in self.urls:
                file.write("{}\n".format(item))
