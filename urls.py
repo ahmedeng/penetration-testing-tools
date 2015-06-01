@@ -121,7 +121,7 @@ class UrlGoogle:
         print '@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@\n'+'\n'.join(self.urls)+'\n Total Urls found:'+str(len(self.urls))+'\n@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@\n@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@'
         if is_db:
             os.system('cp -f urls/urls.db '+out_dir+'/urls.db')
-            con = lite.connect(out_dir+'/urls/urls.db')
+            con = lite.connect(out_dir+'/urls.db')
     
             with con:    
                 cur = con.cursor() 
