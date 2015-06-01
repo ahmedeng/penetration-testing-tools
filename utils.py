@@ -5,7 +5,7 @@ import os
 import errno
 import urllib
 from urlparse import urlsplit
-
+import sqlite3 as lite
 
 COMMENT_CHAR = '#'
 OPTION_CHAR =  '='
@@ -57,7 +57,13 @@ class Utils:
             path=path+'/'
 
         return path
-
+    
+    def create_db_file(self,path):
+        con = lite.connect(path+'/urls.db')
+    
+        with con:
+            cur.execute("CREATE TABLE urls (host VARCHAR,url VARCHAR)")
+           
     def get_host(self,url):
         #print url
         host = "{0.scheme}://{0.netloc}/".format(urlsplit(url))

@@ -120,12 +120,12 @@ class UrlGoogle:
     def save(self,filepath,out_dir,is_db):
         print '@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@\n'+'\n'.join(self.urls)+'\n Total Urls found:'+str(len(self.urls))+'\n@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@\n@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@'
         if is_db:
-            os.system('cp -f urls/urls.db '+out_dir+'/urls.db')
+            utils=utils.Utils()   
+            utils.create_db_file(out_dir)
             con = lite.connect(out_dir+'/urls.db')
     
             with con:    
                 cur = con.cursor() 
-                utils=utils.Utils()   
                 for item in self.urls:
                     global utils
                     host=utils.get_host(item)
