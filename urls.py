@@ -127,6 +127,7 @@ class UrlGoogle:
             cur = con.cursor() 
             utils=utils.Utils()   
             for item in self.urls:
+                global utils
                 host=utils.get_host(item)
                 cur.execute("SELECT host FROM urls where ='" + host+"'")                
                 data = cur.fetchone()
