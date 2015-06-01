@@ -129,7 +129,7 @@ class UrlGoogle:
             for item in self.urls:
                 global utils
                 host=utils.get_host(item)
-                cur.execute("SELECT host FROM urls where ='" + host+"'")                
+                cur.execute("SELECT host FROM urls where host='" +host+"'")                
                 data = cur.fetchone()
                 if not data:
                     cur.execute("INSERT INTO urls VALUES('"+host+"','"+item+"')")
