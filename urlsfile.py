@@ -63,10 +63,10 @@ class UrlsFile:
             con = lite.connect('urls/urls.db')
             with con:    
                 cur = con.cursor() 
-                    cur.execute("SELECT url FROM urls")
-                    rows = cur.fetchall()
-                    for line in rows:
-                        if global_vars['session_name'] != "":
+                cur.execute("SELECT url FROM urls")
+                rows = cur.fetchall()
+                for line in rows:
+                    if global_vars['session_name'] != "":
                             if session.session["opt"] == "load":
                                 if line_num < session.session["urls_line"]:
                                         line_num = line_num + 1
