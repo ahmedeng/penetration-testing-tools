@@ -35,7 +35,7 @@ class UrlsDorks:
             if u.search():
                 print 'Scanning...'
                         
-                u.save(output_filename,output_dir)
+                u.save(output_filename,output_dir,global_vars['db_file'])
                 if os.path.isfile(output_filename):
 ##                    if not global_vars['tflag']:
 ##                        global_vars['targets_file']=output_filename

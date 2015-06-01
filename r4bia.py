@@ -38,7 +38,8 @@ class R4bia:
                    'save_dir':config.CURRENT_DIR + "/output/",
                    'dorks_country':"",
                    'next_url':False,
-                    'delete_file':False,
+                   'delete_file':False,
+                   'db_file':False,
                     }
 
         self.flags = {'uflag':False,
@@ -141,7 +142,7 @@ def main(argv):
    r4bia.usage()   
 
    try:
-      opts, args = getopt.getopt(argv, "ho:f:u:s:g:p:td:a:", ["delete_file", "next_url", "goodork", "add_options=", "session=", "dorks_file=", "dorks=", "demo", "proxychains=", "groups=", "scanners=", "save_dir=", "file=", "url=", "dorks_country="])
+      opts, args = getopt.getopt(argv, "ho:f:u:s:g:p:td:a:", ["db","delete_file", "next_url", "goodork", "add_options=", "session=", "dorks_file=", "dorks=", "demo", "proxychains=", "groups=", "scanners=", "save_dir=", "file=", "url=", "dorks_country="])
    except getopt.GetoptError:
       print 'scan_web.py -f <outputfile>'
       sys.exit(2)
@@ -185,6 +186,8 @@ def main(argv):
         r4bia.global_vars['goodork_flag'] = True
       elif opt == "--next_url":
         r4bia.global_vars['next_url'] = True
+      elif opt == "--db":
+        r4bia.global_vars['db_file'] = True
       elif opt == "--delete_file":
         r4bia.global_vars['delete_file'] = True
       elif opt in ("-a", "--add_options"):

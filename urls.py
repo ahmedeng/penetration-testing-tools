@@ -117,27 +117,27 @@ class UrlGoogle:
         self.search()
 
 
-    def save(self,filepat,out_dir):
+    def save(self,filepath,out_dir,is_db):
         print '@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@\n'+'\n'.join(self.urls)+'\n Total Urls found:'+str(len(self.urls))+'\n@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@\n@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@'
-        
-        os.system('cp -f urls/urls.db '+out_dir+'/urls.db')
-        con = lite.connect('urls/urls.db')
-
-        with con:    
-            cur = con.cursor() 
-            utils=utils.Utils()   
-            for item in self.urls:
-                global utils
-                host=utils.get_host(item)
-                cur.execute("SELECT host FROM urls where host='" +host+"'")                
-                data = cur.fetchone()
-                if not data:
-                    cur.execute("INSERT INTO urls VALUES('"+host+"','"+item+"')")
-
-        with open(filepath, 'w') as file:
-            for item in self.urls:
-               file.write("{}\n".format(item))
-        
+        if is_db:
+            os.system('cp -f urls/urls.db '+out_dir+'/urls.db')
+            con = lite.connect(out_dir+'/urls.db')
+    
+            with con:    
+                cur = con.cursor() 
+                utils=utils.Utils()   
+                for item in self.urls:
+                    global utils
+                    host=utils.get_host(item)
+                    cur.execute("SELECT host FROM urls where host='" +host+"'")                
+                    data = cur.fetchone()
+                    if not data:
+                        cur.execute("INSERT INTO urls VALUES('"+host+"','"+item+"')")
+        else:
+            with open(filepath, 'w') as file:
+                for item in self.urls:
+                   file.write("{}\n".format(item))
+            
 
 ##u=UrlGoogle('site:.il','co.il')
 ##u.search()
