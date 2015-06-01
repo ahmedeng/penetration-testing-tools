@@ -77,11 +77,11 @@ class UrlsFile:
                                 line_num = line_num + 1
                                 print session.session["urls_line"]
                                     
-                            result = re.search("(?P<url>https?://[^\s]+)", line)
-                            if result:
-                                global_vars['target_url'] = result.group("url")
-                                _scanurl = scanurl.ScanUrl()
-                                _scanurl.start_scan_by_url(global_vars, scanners, session)
+                    result = re.search("(?P<url>https?://[^\s]+)", line)
+                    if result:
+                        global_vars['target_url'] = result.group("url")
+                        _scanurl = scanurl.ScanUrl()
+                        _scanurl.start_scan_by_url(global_vars, scanners, session)
 
             if global_vars['delete_file']:
                 os.remove(global_vars['targets_file'])
