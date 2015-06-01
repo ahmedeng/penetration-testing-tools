@@ -62,6 +62,7 @@ class Utils:
         con = lite.connect(path+'/urls.db')
     
         with con:
+            cur = con.cursor()
             cur.execute("CREATE TABLE urls (host VARCHAR,url VARCHAR)")
            
     def get_host(self,url):

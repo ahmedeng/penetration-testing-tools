@@ -60,7 +60,7 @@ class UrlsFile:
                             _scanurl=scanurl.ScanUrl()
                             _scanurl.start_scan_by_url(global_vars,scanners,session)
         else:
-            con = lite.connect('urls/urls.db')
+            con = lite.connect(global_vars['targets_file'])
             with con:    
                 cur = con.cursor() 
                 cur.execute("SELECT url FROM urls")
