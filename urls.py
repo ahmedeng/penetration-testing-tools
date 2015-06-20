@@ -61,8 +61,7 @@ class UrlGoogle:
             google_domain = google_domains[self.next_domain]
             google_domain='http://www'+google_domain
             if self.advanced_search_url:
-                search_link=google_domain+self.advanced_search_url
-                print self.advanced_search_url
+                search_link=google_domain+'/'+self.advanced_search_url
             else:
                 search_link=google_domain+"/search?num="+str(self.results_count)+"&q="+self.query+"&oq="+self.query+"&aqs=chrome..69i57.1384j0j9&sourceid=chrome&es_sm=93&ie=UTF-8"
             print '########################################\n'+str(len(google_domains))+'-'+str(self.next_domain)+'-'+search_link+'\n########################################'
