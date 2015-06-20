@@ -27,10 +27,8 @@ class UrlsDorks:
         else:
             output_dir=_utils.create_save_dir(global_vars['save_dir']+"urls")
             output_filename=output_dir+str(uuid.uuid4())
-            if global_vars['dork'] or global_vars['dorks_file']:
-                print global_vars['dork']
-                global_vars["advanced_search_url"]=global_vars["advanced_search_url"].replace("[TEXT]",global_vars['dork'])
-                exit()
+            if global_vars['dorks'] or global_vars['dorks_file']:
+                global_vars["advanced_search_url"]=global_vars["advanced_search_url"].replace("[TEXT]",global_vars['dorks'])
             if global_vars["advanced_search_url"]:
                 print global_vars["advanced_search_url"]
                 u=urls.UrlGoogle('',global_vars["advanced_search_url"])
