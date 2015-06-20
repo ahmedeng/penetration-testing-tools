@@ -49,7 +49,7 @@ class UrlGoogle:
         self.next_domain=0
         self.results_count=results_count
         self.advanced_search_url=advanced_search_url
-        print self.advanced_search_url
+       
     def search(self):
         retry=True
         same_result_threshold=7
