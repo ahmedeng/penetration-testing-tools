@@ -40,6 +40,7 @@ google_domains=".google.com .google.ad .google.ae .google.com.af .google.com.ag 
 
 class UrlGoogle:
     def __init__(self,query,advanced_search_url,domain='com',results_count=100,start_page=1,end_page=1):
+        self.utils=utils.Utils()
         self.query=query
         self.start_page=start_page
         self.end_page=end_page
@@ -123,15 +124,13 @@ class UrlGoogle:
     def save(self,filepath,out_dir,is_db):
         print '@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@\n'+'\n'.join(self.urls)+'\n Total Urls found:'+str(len(self.urls))+'\n@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@\n@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@'
         if is_db:
-            utils=Utils()   
-            utils.create_db_file(out_dir)
+            self.utils.create_db_file(out_dir)
             con = lite.connect(out_dir+'/urls.db')
     
             with con:    
                 cur = con.cursor() 
                 for item in self.urls:
-                    global utils
-                    host=utils.get_host(item)
+                    host=self.utils.get_host(item)
                     cur.execute("SELECT host FROM urls where host='" +host+"'")                
                     data = cur.fetchone()
                     if not data:
