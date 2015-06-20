@@ -124,6 +124,7 @@ class UrlGoogle:
     def save(self,filepath,out_dir,is_db):
         print '@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@\n'+'\n'.join(self.urls)+'\n Total Urls found:'+str(len(self.urls))+'\n@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@\n@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@'
         if is_db:
+            print "db file : "+out_dir+'/urls.db\n'
             self.utils.create_db_file(out_dir)
             con = lite.connect(out_dir+'/urls.db')
     
