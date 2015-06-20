@@ -39,7 +39,7 @@ google_domains=".google.com .google.ad .google.ae .google.com.af .google.com.ag 
 
 
 class UrlGoogle:
-    def __init__(self,query,domain='com',results_count=100,start_page=1,end_page=1,advanced_search_url):
+    def __init__(self,query,advanced_search_url,domain='com',results_count=100,start_page=1,end_page=1):
         self.query=query
         self.start_page=start_page
         self.end_page=end_page
