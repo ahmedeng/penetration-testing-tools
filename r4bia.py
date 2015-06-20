@@ -168,6 +168,8 @@ def main(argv):
          r4bia.global_vars['dorks_country'] = arg
       elif opt == "--advanced_search":
          r4bia.global_vars['advanced_search_url'] = arg
+         print r4bia.global_vars["advanced_search_url"]
+                
                
       elif opt in ("-s", "--scanners"):
          if not gflag:
