@@ -40,6 +40,7 @@ class R4bia:
                    'next_url':False,
                    'delete_file':False,
                    'db_file':False,
+                   'advanced_search_url':"",
                     }
 
         self.flags = {'uflag':False,
@@ -142,7 +143,7 @@ def main(argv):
    r4bia.usage()   
 
    try:
-      opts, args = getopt.getopt(argv, "ho:f:u:s:g:p:td:a:", ["db","delete_file", "next_url", "goodork", "add_options=", "session=", "dorks_file=", "dorks=", "demo", "proxychains=", "groups=", "scanners=", "save_dir=", "file=", "url=", "dorks_country="])
+      opts, args = getopt.getopt(argv, "ho:f:u:s:g:p:td:a:", ["advanced_search_url=","db","delete_file", "next_url", "goodork", "add_options=", "session=", "dorks_file=", "dorks=", "demo", "proxychains=", "groups=", "scanners=", "save_dir=", "file=", "url=", "dorks_country="])
    except getopt.GetoptError:
       print 'scan_web.py -f <outputfile>'
       sys.exit(2)
@@ -165,7 +166,9 @@ def main(argv):
          gflag = True
       elif opt == "--dorks_country":
          r4bia.global_vars['dorks_country'] = arg
-                  
+      elif opt == "--advanced_search":
+         r4bia.global_vars['advanced_search_url'] = arg
+               
       elif opt in ("-s", "--scanners"):
          if not gflag:
              r4bia.global_vars['requested_scanners_string'] = arg

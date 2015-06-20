@@ -39,7 +39,7 @@ google_domains=".google.com .google.ad .google.ae .google.com.af .google.com.ag 
 
 
 class UrlGoogle:
-    def __init__(self,query,domain='com',results_count=100,start_page=1,end_page=1):
+    def __init__(self,query,domain='com',results_count=100,start_page=1,end_page=1,advanced_search_url):
         self.query=query
         self.start_page=start_page
         self.end_page=end_page
@@ -48,7 +48,7 @@ class UrlGoogle:
         self.urls=set()
         self.next_domain=0
         self.results_count=results_count
-        
+        self.advanced_search_url=advanced_search_url
         
     def search(self):
         retry=True
@@ -60,7 +60,10 @@ class UrlGoogle:
                 return False
             google_domain = google_domains[self.next_domain]
             google_domain='http://www'+google_domain
-            search_link=google_domain+"/search?num="+str(self.results_count)+"&q="+self.query+"&oq="+self.query+"&aqs=chrome..69i57.1384j0j9&sourceid=chrome&es_sm=93&ie=UTF-8"
+            if self.advanced_search_url:
+                search_link=google_domain+self.advanced_search_url
+            else:
+                search_link=google_domain+"/search?num="+str(self.results_count)+"&q="+self.query+"&oq="+self.query+"&aqs=chrome..69i57.1384j0j9&sourceid=chrome&es_sm=93&ie=UTF-8"
             print '########################################\n'+str(len(google_domains))+'-'+str(self.next_domain)+'-'+search_link+'\n########################################'
             try:
                 responce=requests.get(search_link,timeout=20)
