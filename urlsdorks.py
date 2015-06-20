@@ -31,7 +31,7 @@ class UrlsDorks:
                 if global_vars['dorks'] or global_vars['dorks_file']:
                     global_vars["advanced_search_url"]=global_vars["advanced_search_url"].replace("[TEXT]","inurl:"+global_vars['dorks'])
             
-                print global_vars["advanced_search_url"]
+                print global_vars['dorks']
                 return
                 u=urls.UrlGoogle('',global_vars["advanced_search_url"])
             elif global_vars['dorks_country']:
