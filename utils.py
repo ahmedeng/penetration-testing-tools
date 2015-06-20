@@ -63,7 +63,7 @@ class Utils:
     
         with con:
             cur = con.cursor()
-            cur.execute("CREATE TABLE IF NOT EXIST urls (host VARCHAR,url VARCHAR)")
+            cur.execute("CREATE TABLE IF NOT EXISTS urls (host VARCHAR,url VARCHAR)")
            
     def get_host(self,url):
         #print url
