@@ -7,6 +7,7 @@ import urls
 import config
 import utils
 import os
+from __builtin__ import exit
 
 #Start of class Scanner
 
@@ -25,12 +26,15 @@ class UrlsDorks:
             print command
             subprocess.call(command.split(),shell=False);
         else:
+            print global_vars["advanced_search_url"]
+            exit()
             output_dir=_utils.create_save_dir(global_vars['save_dir']+"urls")
             output_filename=output_dir+str(uuid.uuid4())
             if global_vars['dork'] or global_vars['dorks_file']:
                 global_vars["advanced_search_url"]=global_vars["advanced_search_url"].replace("[TEXT]",global_vars['dork'])
                 
             if global_vars["advanced_search_url"]:
+                print global_vars["advanced_search_url"]
                 u=urls.UrlGoogle('',global_vars["advanced_search_url"])
             elif global_vars['dorks_country']:
                 output_filename=output_dir+str(global_vars['dorks']+'_urls.'+global_vars['dorks_country'])
