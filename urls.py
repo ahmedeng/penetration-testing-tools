@@ -92,7 +92,7 @@ class UrlGoogle:
             for li in soup.find_all('li',attrs={'class':'g'}):
                 url=li.a['href']
                 url=urlparse.parse_qs(urlparse.urlparse(url).query)
-                if 'q' in url:
+                if 'q' in url and not url.endwith(".pdf"):
                     url=url['q'][0]
                     self.urls.add(url)
 
