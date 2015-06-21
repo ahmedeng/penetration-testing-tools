@@ -28,7 +28,7 @@ class Session:
                    'targets_file':"",
                    'dorks_file':"",
                    'save_dir':config.CURRENT_DIR+"/output/",
-                   'dorks_country':""
+                   'dorks_country':"",
                    'db_file':False,
                    'advanced_search_url':"",
                     }
