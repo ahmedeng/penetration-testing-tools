@@ -113,7 +113,7 @@ class UrlGoogle:
                         #threshold=0
                 if threshold==same_result_threshold:
                     break
-                break
+        
         return True
             #time.sleep(3)
 
