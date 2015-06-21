@@ -41,6 +41,7 @@ class Session:
         pickle.dump( self.session, open( config.SESSIONS_DIR+self.session["session_name"], "wb" ) )
         
     def start_session(self,global_vars):
+        print 'HHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH'
         self.session["requested_scanners_string"]=global_vars['requested_scanners_string']
         self.session["proxychains_string"]=global_vars['proxychains_string']
         self.session["target_url"]=global_vars['target_url']
