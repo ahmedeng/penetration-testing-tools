@@ -7,7 +7,7 @@ import urls
 import config
 import utils
 import os
-
+import urllib
 #Start of class Scanner
 
 class UrlsDorks:
@@ -27,16 +27,17 @@ class UrlsDorks:
         else:
             output_dir=_utils.create_save_dir(global_vars['save_dir']+"urls")
             output_filename=output_dir+str(uuid.uuid4())
+            dork=urllib.pathname2url(global_vars['dorks'])
             if global_vars["advanced_search_url"]:
                 if global_vars['dorks'] or global_vars['dorks_file']:
-                    advanced_search_url=global_vars["advanced_search_url"].replace("[TEXT]","inurl:"+global_vars['dorks'])
+                    advanced_search_url=global_vars["advanced_search_url"].replace("[TEXT]","inurl:"+dork)
             
                 u=urls.UrlGoogle('',advanced_search_url)
             elif global_vars['dorks_country']:
                 output_filename=output_dir+str(global_vars['dorks']+'_urls.'+global_vars['dorks_country'])
-                u=urls.UrlGoogle('site:.'+global_vars['dorks_country']+' inurl:'+global_vars['dorks'],global_vars["advanced_search_url"])
+                u=urls.UrlGoogle('site:.'+global_vars['dorks_country']+' inurl:'+dork)
             else:
-                u=urls.UrlGoogle(global_vars['dorks'],global_vars["advanced_search_url"]) 
+                u=urls.UrlGoogle(dork) 
             if u.search():
                 print 'Scanning...'
                         
