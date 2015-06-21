@@ -132,10 +132,10 @@ class UrlGoogle:
                 cur = con.cursor() 
                 for item in self.urls:
                     host=self.utils.get_host(item)
-                    cur.execute("SELECT host FROM urls where host='" +host+"'")                
+                    cur.execute("SELECT host FROM urls where host='?'",(host))                
                     data = cur.fetchone()
                     if not data:
-                        cur.execute("INSERT INTO urls VALUES('"+host+"','"+item+"')")
+                        cur.execute("INSERT INTO urls VALUES('?','?')",(host,item))
         else:
             with open(filepath, 'w') as file:
                 for item in self.urls:
