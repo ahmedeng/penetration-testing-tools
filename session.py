@@ -51,11 +51,8 @@ class Session:
         self.session["dorks_country"]=global_vars['dorks_country']
         self.session["opt"]="start"
         self.session["session_name"]=global_vars['session_name']
-        self.session = pickle.load( open( config.SESSIONS_DIR+global_vars['session_name'], "rb" ) )
         self.session["db_file"]=global_vars['db_file']
         self.session["advanced_search_url"]=global_vars['advanced_search_url']
-        pickle.dump( self.session, open( config.SESSIONS_DIR+self.session["session_name"], "wb" ) )
-        exit()
         #print session
         return
 
