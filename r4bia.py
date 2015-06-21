@@ -103,7 +103,7 @@ class R4bia:
             self.global_vars['requested_scanners_string'] = self.global_vars['requested_scanners_string'][:-1]
             # print requested_scanners_string
         if self.global_vars['proxychains_string'] == "all":
-             self.gl    obal_vars['proxychains_string'] = ""
+             self.global_vars['proxychains_string'] = ""
              for scan in self.scanners.scanners.keys():
                  self.global_vars['proxychains_string'] = self.global_vars['proxychains_string'] + scan + ','
              self.global_vars['proxychains_string'] = self.global_vars['proxychains_string'][:-1]
