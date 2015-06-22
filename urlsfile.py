@@ -73,10 +73,10 @@ class UrlsFile:
                                         line_num = line_num + 1
                                         continue
                                 
-                                session.session["urls_line"] = line_num
-                                session.save_session()
-                                line_num = line_num + 1
-                                print session.session["urls_line"]
+                            session.session["urls_line"] = line_num
+                            session.save_session()
+                            line_num = line_num + 1
+                            print session.session["urls_line"]
                                     
                     result = re.search("(?P<url>https?://[^\s]+)", line)
                     if result:
