@@ -47,7 +47,7 @@ def find_injected(dir):
                         target['tool']='sql_map'
                         targets.append(target)
                         print str(i)+"-"+log_file_path
-                        os.system('mv -f '+root+' '+injectable_dir)
+                        #os.system('mv -f '+root+' '+injectable_dir)
                                 #break
     #print targets
 
