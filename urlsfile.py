@@ -77,7 +77,7 @@ class UrlsFile:
                             session.save_session()
                             line_num = line_num + 1
                             print session.session["urls_line"]
-                                    
+                    line=line.encode("utf-8")                
                     result = re.search("(?P<url>https?://[^\s]+)", line)
                     if result:
                         global_vars['target_url'] = result.group("url")
