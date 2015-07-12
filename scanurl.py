@@ -73,6 +73,7 @@ class ScanUrl:
                     command=command.replace("{output_dir}",output_dir)
                     output_option=True
                 
+                command=command.encode("utf-8")                                    
                 print command
                 
                 if not global_vars['tflag']:
